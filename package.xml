@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>atmobi_lt_switcher</name>
+  <version>1.0.0</version>
+  <description>This is a package that works with the swd_lt to improve atmobi accuracy.</description>
+  <maintainer email="zz_gitadmin@idec.com">IDEC Corporation</maintainer>
+  <license>LGPLv2.1</license>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

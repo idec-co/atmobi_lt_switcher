@@ -1,0 +1,13 @@
+[Unit]
+Description=Atmobi Lt Switcher Launch Service
+After=atmobi.service
+Requires=atmobi.service
+
+[Service]
+Type=simple
+User=atmobi
+ExecStartPre=/bin/sh -c '[ -e /dev/swd-lt-camera ]'
+ExecStart=/home/atmobi/atmobi_lt_switcher.sh
+
+[Install]
+WantedBy=multi-user.target

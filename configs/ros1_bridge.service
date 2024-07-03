@@ -1,0 +1,13 @@
+[Unit]
+Description=ROS 1 Bridge Service
+After=atmobi_lt_switcher.service
+Requires=atmobi_lt_switcher.service
+
+[Service]
+Type=simple
+User=atmobi
+ExecStart=/home/atmobi/ros1_bridge.sh
+Environment="LD_LIBRARY_PATH=/opt/ros/noetic/lib:/opt/ros/foxy/lib:$LD_LIBRARY_PATH"
+
+[Install]
+WantedBy=multi-user.target
