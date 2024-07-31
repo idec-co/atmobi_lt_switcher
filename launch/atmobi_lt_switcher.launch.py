@@ -42,6 +42,8 @@ def generate_launch_description():
         control_d = configuration_pid["/swd_lt_controller"]["ros__parameters"]["control_d"]
         normal_speed_ms = \
             configuration_pid["/swd_lt_controller"]["ros__parameters"]["normal_speed_ms"]
+        slow_speed_ms = \
+            configuration_pid["/swd_lt_controller"]["ros__parameters"]["slow_speed_ms"]
         control_position_offset_cm = \
             configuration_pid["/swd_lt_controller"]["ros__parameters"]["control_position_offset_cm"]
 
@@ -56,7 +58,8 @@ def generate_launch_description():
             parameters=[{'video_device': "/dev/swd-lt-camera",
                          'white_balance_temperature_auto': True,
                          'exposure_auto': 1,
-                         'focus_auto': True}],
+                         'focus_auto': True,
+                         'focus_absolute': 40}],
             remappings=[('/image_raw', '/camera/image_raw')],
             output='screen',
             condition=UnlessCondition(LaunchConfiguration('is_sim_mode'))
@@ -65,7 +68,8 @@ def generate_launch_description():
             package='swd_lt',
             executable='swd_lt_aruco_maker_recognition',
             name='swd_lt_aruco_maker_recognition',
-            parameters=[{'marker_size_m': 0.08}],
+            parameters=[{'marker_size_m': 0.05,
+                         'threshold_to_activate_r_marker': 0.0}],
             remappings=[('/image_raw', '/camera/image_raw')],
             output='screen'
         ),
@@ -91,7 +95,7 @@ def generate_launch_description():
             executable='swd_lt_controller',
             name='swd_lt_controller',
             parameters=[{'normal_speed_ms': normal_speed_ms,
-                        'slow_speed_ms': 0.1,
+                        'slow_speed_ms': slow_speed_ms,
                          'control_position_offset_cm': control_position_offset_cm,
                          'control_p': control_p,
                          'control_i': control_i,

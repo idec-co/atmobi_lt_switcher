@@ -1,0 +1,17 @@
+#
+### for EZW-CUBE
+#
+footprint: &footprint [[0.5,0.25],[-0.25,0.25],[-0.25,-0.25],[0.5,-0.25]] # New SWD
+atmobi:
+  move_base:
+    global_costmap:
+      footprint: *footprint
+    local_costmap:
+      footprint: *footprint
+    GppPathFollowerROS:
+      area1_deceleration:          "[[0.55,0.15],[ 0.35,0.35],[-0.30,0.35],[-0.30,-0.35],[ 0.35,-0.35],[0.55,-0.15]]" # <str>default:[] # Area1(in there, decelerate for obstacles) specified in the robot_base_frame coordinate frame as a list in the format: [ [x1, y1], [x2, y2], ...., [xn, yn] ].
+      area2_stop:                  "[[0.45,0.20],[ 0.35,0.30],[-0.25,0.30],[-0.25,-0.30],[ 0.35,-0.30],[0.45,-0.20]]" # <str>default:[] # Area2(in there, stop for obstacles) specified in the robot_base_frame coordinate frame as a list in the format: [ [x1, y1], [x2, y2], ...., [xn, yn] ].
+      backward_area1_deceleration: "[[0.30,0.35],[-0.35,0.35],[-0.55,0.20],[-0.55,-0.20],[-0.35,-0.35],[0.30,-0.35]]"
+      backward_area2_stop:         "[[0.25,0.30],[-0.35,0.30],[-0.45,0.20],[-0.45,-0.20],[-0.35,-0.30],[0.25,-0.30]]"
+      turn_left_area2_stop:        "[[0.35,0.25],[ 0.25,0.35],[-0.30,0.30],[-0.35,-0.25],[-0.25,-0.35],[0.30,-0.30]]"
+      turn_right_area2_stop:       "[[0.30,0.30],[-0.25,0.35],[-0.35,0.25],[-0.30,-0.30],[ 0.25,-0.35],[0.35,-0.25]]"
