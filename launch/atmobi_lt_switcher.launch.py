@@ -61,6 +61,7 @@ def generate_launch_description():
                          'focus_auto': True,
                          'focus_absolute': 40}],
             remappings=[('/image_raw', '/camera/image_raw')],
+            respawn=True,
             output='screen',
             condition=UnlessCondition(LaunchConfiguration('is_sim_mode'))
         ),
